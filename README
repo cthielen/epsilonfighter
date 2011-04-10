@@ -1,0 +1,72 @@
+ Epsilon Fighter
+ -------------
+ Version 0.1
+ Written by Chris Thielen (chris@epiar.net)
+ 
+ Contents
+ --------
+ I. Introduction
+ II. License
+ III. Story
+ IV. Installation
+ V. How to play
+ VI. Contact
+ 
+ I. Introduction
+ ---------------
+     Epsilon Fighter is a two-dimensional space action/arcade game set in
+ the style of an old DOS computer game. The graphics are purposefully
+ pixelated and the music is meant to sound like an old primitive MIDI
+ sound card. The focus of the game is gameplay: story, action, and all the
+ other subtle game aspects that don't get much attention in the world of
+ flashy 3D graphics and sound.
+ 
+ II. License
+ -----------
+     Epsilon Fighter is licensed under the GNU GPL v2. A copy of this license
+ is available in the LICENSE file that came with this game.
+ 
+ III. Story
+ ----------
+ IMC Headquarters. April 29, 2486. 4:32 am local time.
+ 
+     " Sorry to wake you, sir, the computer is reporting that it has lost
+ contact with Colony 12."
+     " Colony 12? That's one of the deep space research stations, right?"
+	 " Yes sir, on the southern continent of Galanti II."
+	 " That's far away leuitenant. I wouldn't be alarmed until the tetriary
+ contact window has passed. Not all communications makes it that far
+ across the galaxy you know? Gotta try a couple times."
+     " Yes, I understand that, sir, but the tetriary contact window has
+ passed."
+     " How long ago?"
+	 " Two days."
+	 " These systems have backups of backups of backups, so the computers
+ couldn't have failed. Did you check for any instellear object interfering?"
+     " There was what looked like an ivory shower earlier this morning in
+ the Ivory solar system."
+     " Where's that?"
+	 " Less than a half lightyear from Galanti and Colony 12."
+	 " So we wait. That probably ruined the signals coming through."
+	 " No sir, it only looked like a meteor shower."
+	 " What are you trying to say son?"
+	 " It was moving at three quarters lightspeed."
+
+ IV. Installation
+ ----------------
+    Installation of Epsilon Fighter varies depending on the package
+ downloaded. If you downloaded the source package, you will need
+ a C++ compiler such as GNU GCC 3.1. The game may or may not compile
+ under GNU GCC 2.x. Compiling also requires the Simple DirectMedia
+ Library (SDL, www.libsdl.org) and SDL_image (www.libsdl.org). SDL
+ is needed for the graphics and input and SDL_image is used to load
+ PNG files. If you are compiling SDL_image yourself, ensure PNG
+ support is enabled, which requires the installation of zlib and
+ libpng.
+    If you are installing a binary package, simply run the installer.
+    All data files are installed in $(PREFIX)/etc/epsilonfighter/ and
+ all user-specific configuration files are stored in
+ $(HOME)/.epsilonfighter/.
+ 
+ V. How to Play
+ -------------- 
