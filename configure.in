@@ -30,7 +30,7 @@ case "$target" in
 esac
 
 dnl Check for SDL
-SDL_VERSION=1.2.10
+SDL_VERSION=1.2.12
 
 case "$target" in
 	*-*-linux* | *-*-cygwin* | *-*-mingw32* | *-*-freebsd*)
