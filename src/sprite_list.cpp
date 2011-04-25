@@ -96,7 +96,7 @@ list<cSprite *>::iterator cSpriteList::Enumerate( list<cSprite *>::iterator i ) 
 	i++;
 	
 	if( i == sprites.end() )
-		return( NULL );
+		return( (list<cSprite *>::iterator)NULL );
 	
 	return( i );
 }

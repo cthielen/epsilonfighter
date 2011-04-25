@@ -5,8 +5,8 @@ DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 bin_PROGRAMS = efighter
 
-efighter_SOURCES = src/afont/afont_base.c \
-src/afont/afont_sdl.c \
+efighter_SOURCES = src/afont/afont_base.cpp \
+src/afont/afont_sdl.cpp \
 src/ammo.cpp \
 src/animation.cpp \
 src/audio.cpp \
@@ -25,6 +25,7 @@ src/menu.cpp \
 src/rotate.cpp \
 src/ship.cpp \
 src/sprite_list.cpp \
+src/sprite.cpp \
 src/starfield.cpp \
 src/timer.cpp \
 src/trig.cpp \

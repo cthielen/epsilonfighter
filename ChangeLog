@@ -1,3 +1,9 @@
+Sun, Apr 24, 2011
+	Chris:
+		* Fixed compilation errors with GCC 4.6
+		* Added 'w' and 's' keys for throttle in addition to mouse
+		wheel
+
 Tue, Jun 12, 2007
 	Chris:
 		* Started ChangeLog

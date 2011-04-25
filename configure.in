@@ -80,7 +80,7 @@ esac
 dnl Set MinGW-specific options
 case "$target" in
 	*-*-mingw32*)
-		LIBS="$LIBS -lopengl32 -lintl"
+		LIBS="$LIBS -lopengl32"
 		;;
 esac
 
@@ -88,7 +88,7 @@ dnl Set Unix specific options
 case "$target" in
 	*-*-linux* | *-*-freebsd*)
 		CFLAGS="$CFLAGS -DUNIX -I/usr/include/GL"
-		LIBS="$LIBS -lGL -lGLU -lz -lintl"
+		LIBS="$LIBS -lGL -lGLU -lz"
 		;;
 esac
 
@@ -96,7 +96,7 @@ dnl Set OS X specific options
 case "$target" in
 	*-apple-darwin*)
 		CFLAGS="$CFLAGS -DDARWIN"
-		LIBS="$LIBS -lintl"
+		LIBS="$LIBS"
 		;;
 esac
 

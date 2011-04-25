@@ -40,7 +40,7 @@ void cHud::Draw( void ) {
 	// draw the radar blips
 	list<cSprite *>::iterator i = spriteList->Enumerate();
         
-	while( i != NULL ) {
+	while( i != (list<cSprite *>::iterator)NULL ) {
 		float x, y;
 		cSprite *sprite;
 		

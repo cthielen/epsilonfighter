@@ -62,6 +62,12 @@ cLevel::cLevel( int which ) {
 						case SDLK_ESCAPE:
 							quit = true;
 							break;
+						case SDLK_w:
+							player.ThrottleUp();
+							break;
+						case SDLK_s:
+							player.ThrottleDown();
+							break;
 						default:
 							break;
 					}
