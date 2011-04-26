@@ -3,9 +3,9 @@
 
 #include "sprite.h"
 
-class cAmmo : public cSprite {
+class Ammo : public Sprite {
 	public:
-		cAmmo( cSprite *owner, float x, float y, float ang );
+		Ammo( Sprite *owner, float x, float y, float ang );
 		
 		void Collision( float severity );
 		void Update( float px, float py );

@@ -8,31 +8,31 @@
 #include "timer.h"
 #include "video.h"
 
-cLevel::cLevel( int which ) {
-	cStarfield starfield( 350 );
-	cHud hud;
-	cTimer *timer = cTimer::Instance();
-	cVideo *video = cVideo::Instance();
-	cSpriteList *spriteList = cSpriteList::Instance();
-	cShip player; // the player sprite
+Level::Level( int which ) {
+	Starfield starfield( 350 );
+	Hud hud;
+	Timer *timer = Timer::Instance();
+	Video *video = Video::Instance();
+	SpriteList *spriteList = SpriteList::Instance();
+	Ship *player = new Ship(); // the player sprite
 	bool quit = false;
 	SDL_Event event;
 
-	camera = cCamera::Instance();
+	camera = Camera::Instance();
 
-	camera->Follow( &player );
+	camera->Follow( player );
 
-	player.UseAI( false );
-	player.IsPlayer( true );
+	player->UseAI( false );
+	player->IsPlayer( true );
 
-	player.SetThrust( 5. );
+	player->SetThrust( 5. );
 	
 	// add player
-	spriteList->Add( &player );
+	spriteList->Add( player );
 
-	cShip test( 15, 15 );
+	Ship *test = new Ship( 15, 15 );
 	
-	spriteList->Add( &test );
+	spriteList->Add( test );
 
 	if( SDL_Init( SDL_INIT_JOYSTICK ) != 0 )
 		cout << "massive joystick error" << endl; // move to an input class
@@ -55,7 +55,7 @@ cLevel::cLevel( int which ) {
 				case SDL_JOYAXISMOTION:
 					cout << "joystick motion!" << endl;
 					if(event.jaxis.which == 0)
-						player.Turn( (float)-20 * 0.15f );
+						player->Turn( (float)-20 * 0.15f );
 					break;
 				case SDL_KEYDOWN:
 					switch( event.key.keysym.sym ) {
@@ -63,10 +63,10 @@ cLevel::cLevel( int which ) {
 							quit = true;
 							break;
 						case SDLK_w:
-							player.ThrottleUp();
+							player->ThrottleUp();
 							break;
 						case SDLK_s:
-							player.ThrottleDown();
+							player->ThrottleDown();
 							break;
 						default:
 							break;
@@ -76,17 +76,17 @@ cLevel::cLevel( int which ) {
 					if(( event.motion.xrel ) && ( event.motion.xrel != 160 )) {
 						if( abs(event.motion.xrel) > 20 )
 							if(event.motion.xrel < 0)
-								player.Turn( (float)-20 * 0.15f );
+								player->Turn( (float)-20 * 0.15f );
 							else
-								player.Turn( (float)20 * 0.15f );
+								player->Turn( (float)20 * 0.15f );
 						else
-							player.Turn( (float)event.motion.xrel * 0.15f );
+							player->Turn( (float)event.motion.xrel * 0.15f );
 					}
 					break;
 				case SDL_MOUSEBUTTONDOWN:
-					if( event.button.button == 1) player.Fire();
-					if( event.button.button == 4) player.ThrottleUp();
-					if( event.button.button == 5) player.ThrottleDown();
+					if( event.button.button == 1) player->Fire();
+					if( event.button.button == 4) player->ThrottleUp();
+					if( event.button.button == 5) player->ThrottleDown();
 					break;
 				default:
 					break;

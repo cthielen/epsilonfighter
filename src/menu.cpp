@@ -10,13 +10,13 @@
 #define NUM_STARS 300
 
 void menu( void ) {
-	cImage presents( "data/presents.png" );
-	cImage title( "data/title.png" );
-	cImage menu( "data/menu.png" );
-	cImage rageful( "data/rageful.png" );
-	cVideo *video = cVideo::Instance();
-	cTrig *trig = cTrig::Instance();
-	cAudio *audio = cAudio::Instance();
+	Image presents( "data/presents.png" );
+	Image title( "data/title.png" );
+	Image menu( "data/menu.png" );
+	Image rageful( "data/rageful.png" );
+	Video *video = Video::Instance();
+	Trig *trig = Trig::Instance();
+	Audio *audio = Audio::Instance();
 	int cx, cy; // center of screen
 
 	Uint32 end_time;
@@ -164,7 +164,7 @@ void menu( void ) {
 	}
 
 	// do the mission briefing
-	cBriefing briefing( 1 );
+	Briefing briefing( 1 );
 
-	cLevel level( 1 );
+	Level level( 1 );
 }

@@ -6,8 +6,8 @@
 #include "video.h"
 
 int main( int argc, char **argv ) {
-	cVideo *video = cVideo::Instance();
-	cAudio *audio = cAudio::Instance();
+	Video *video = Video::Instance();
+	Audio *audio = Audio::Instance();
 
 	log( logMessage, "Epsilon Fighter v%d.%d.%d starting ...",
 		VERSION_MAJOR, VERSION_MINOR, VERSION_MICRO );
@@ -19,7 +19,7 @@ int main( int argc, char **argv ) {
 
 	if( argc > 1) {
 		if( !strcmp( argv[1], "--debug" ) ) {
-			cLevel level( 1 );
+			Level level( 1 );
 		} else
 			menu();
 	} else {

@@ -2,10 +2,10 @@
 #define H_STARFIELD
 
 
-class cStarfield {
+class Starfield {
 	public:
-		cStarfield( int num );
-		~cStarfield( void );
+		Starfield( int num );
+		~Starfield( void );
 
 		void Update();
 		void Draw( void );

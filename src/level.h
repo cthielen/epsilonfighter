@@ -5,13 +5,13 @@
 #include "includes.h"
 #include "sprite.h"
 
-class cLevel {
+class Level {
 	public:
-		cLevel( int which );
+		Level( int which );
 
 	private:
-		vector<cSprite *> sprites;
-		cCamera *camera;
+		vector<Sprite *> sprites;
+		Camera *camera;
 
 };
 

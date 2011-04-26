@@ -3,8 +3,8 @@
 #include "includes.h"
 #include "video.h"
 
-cBriefing::cBriefing( int which ) {
-	cVideo *video = cVideo::Instance();
+Briefing::Briefing( int which ) {
+	Video *video = Video::Instance();
 	font.SetFont( "data/font1.af" );
 
 	if( which == 1 ) {

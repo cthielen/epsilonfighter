@@ -5,10 +5,10 @@
 #include "sprite.h"
 #include "weapon.h"
 
-class cShip : public cSprite {
+class Ship : public Sprite {
 	public:
-		cShip();
-		cShip( float x, float y );
+		Ship();
+		Ship( float x, float y );
 	
 		void Update( float px, float py );
 		void Draw( void );
@@ -29,7 +29,7 @@ class cShip : public cSprite {
 
 		float shieldStrength, hullStrength;
 	
-		cWeapon weapon;
+		Weapon weapon;
 	
 		fxShield flare; // the shield flare eye candy
 };

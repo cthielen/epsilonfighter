@@ -3,22 +3,22 @@
 #include "video.h"
 #include "zoom.h"
 
-cVideo *cVideo::pInstance = 0;
+Video *Video::pInstance = 0;
 
-cVideo::cVideo( void ) {
+Video::Video( void ) {
 	screen = NULL;
 }
 
-cVideo *cVideo::Instance( void ) {
+Video *Video::Instance( void ) {
 
 	if( pInstance == 0 ) {
-		pInstance = new cVideo;
+		pInstance = new Video;
 	}
 
 	return( pInstance );
 }
 
-bool cVideo::SetWindow( int w, int h, int bpp ) {
+bool Video::SetWindow( int w, int h, int bpp ) {
 
 	if( SDL_Init( SDL_INIT_VIDEO ) != 0 ) {
 		log( logError, "Could not initialize SDL: %s\n", SDL_GetError() );
@@ -27,7 +27,7 @@ bool cVideo::SetWindow( int w, int h, int bpp ) {
 
 	atexit( SDL_Quit );
 
-	window = SDL_SetVideoMode( w, h, bpp, SDL_FULLSCREEN );
+	window = SDL_SetVideoMode( w, h, bpp, 0 ); //SDL_FULLSCREEN );
 	if( !window ) {
 		log (logError, "Could not set video mode: %s\n", SDL_GetError() );
 		return( failure );
@@ -45,29 +45,29 @@ bool cVideo::SetWindow( int w, int h, int bpp ) {
 	return( true );
 }
 
-void cVideo::Update( void ) {
+void Video::Update( void ) {
 	scale2x( screen, window );
 	
 	SDL_Flip( window );
 }
 
-int cVideo::GetWidth( void ) {
+int Video::GetWidth( void ) {
 	return( screen->w );
 }
 
-int cVideo::GetHeight( void ) {
+int Video::GetHeight( void ) {
 	return( screen->h );
 }
 
-SDL_Surface *cVideo::GetScreen( void ) {
+SDL_Surface *Video::GetScreen( void ) {
 	return( screen );
 }
 
-void cVideo::Blank( void ) {
-	DrawRect( 0, 0, screen->w, screen->h, cVideo::clrBlack );
+void Video::Blank( void ) {
+	DrawRect( 0, 0, screen->w, screen->h, Video::clrBlack );
 }
 
-void cVideo::DrawRect( int x, int y, int w, int h, Uint32 clr ) {
+void Video::DrawRect( int x, int y, int w, int h, Uint32 clr ) {
 	SDL_Rect rect;
 
 	rect.x = x;
@@ -78,7 +78,7 @@ void cVideo::DrawRect( int x, int y, int w, int h, Uint32 clr ) {
 	SDL_FillRect( screen, &rect, clr );
 }
 
-void cVideo::DrawPixel( int x, int y, Uint32 clr ) {
+void Video::DrawPixel( int x, int y, Uint32 clr ) {
 	Uint8 *p;
 	int bpp = screen->format->BytesPerPixel;
 
@@ -120,11 +120,11 @@ void cVideo::DrawPixel( int x, int y, Uint32 clr ) {
 		SDL_UnlockSurface( screen );
 }
 
-Uint32 cVideo::RGBtoClr( int r, int g, int b ) {
+Uint32 Video::RGBtoClr( int r, int g, int b ) {
 	return( SDL_MapRGB( screen->format, r, g, b ) );
 }
 
-bool cVideo::OutOfBounds( int x, int y ) {
+bool Video::OutOfBounds( int x, int y ) {
 	if( x < 0 )
 		return( true );
 	if( x > (screen->w - 1) )

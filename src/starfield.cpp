@@ -5,8 +5,8 @@
 #include "trig.h"
 #include "video.h"
 
-cStarfield::cStarfield( int num ) {
-	cVideo *video = cVideo::Instance();
+Starfield::Starfield( int num ) {
+	Video *video = Video::Instance();
 	stars = (struct _stars *)malloc( sizeof( struct _stars ) * num );
 	int i;
 
@@ -22,16 +22,16 @@ cStarfield::cStarfield( int num ) {
 	}
 }
 
-cStarfield::~cStarfield( void ) {
+Starfield::~Starfield( void ) {
 	free( stars );
 }
 
-void cStarfield::Update( void ) {
+void Starfield::Update( void ) {
 	float dx, dy;
-	cVideo *video = cVideo::Instance();
-	cCamera *camera = cCamera::Instance();
-	cTrig *trig = cTrig::Instance();
-	cTimer *timer = cTimer::Instance();
+	Video *video = Video::Instance();
+	Camera *camera = Camera::Instance();
+	Trig *trig = Trig::Instance();
+	Timer *timer = Timer::Instance();
 	int i;
 	int w, h;
 
@@ -55,9 +55,9 @@ void cStarfield::Update( void ) {
 	}
 }
 
-void cStarfield::Draw( void ) {
+void Starfield::Draw( void ) {
 	int i;
-	cVideo *video = cVideo::Instance();
+	Video *video = Video::Instance();
 
 	for( i = 0; i < num; i++ ) {
 		video->DrawPixel( (int)stars[i].sx, (int)stars[i].sy, stars[i].clr );

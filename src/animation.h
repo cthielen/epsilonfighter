@@ -24,7 +24,7 @@ class cAnimation {
   void Reset( void );
 
  private:
-  cImage *strip;
+  Image *strip;
   Uint32 length;
   Uint32 fps;
   int num; // total number of frames

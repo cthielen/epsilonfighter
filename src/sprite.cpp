@@ -8,8 +8,8 @@
 #include "vector.h"
 #include "video.h"
 
-cSprite::cSprite( void ) {
-	cVideo *video = cVideo::Instance();
+Sprite::Sprite( void ) {
+	Video *video = Video::Instance();
 	
 	x = 0.;
 	y = 0.;
@@ -22,12 +22,12 @@ cSprite::cSprite( void ) {
 	radarBlip = video->RGBtoClr( 255, 255, 255 );
 	
 	deleteMe = false;
-	
+
 	owner = NULL;
 }
 
-cSprite::cSprite( float x, float y ) {
-	cVideo *video = cVideo::Instance();
+Sprite::Sprite( float x, float y ) {
+	Video *video = Video::Instance();
 	
 	this->x = x;
 	this->y = y;
@@ -44,10 +44,10 @@ cSprite::cSprite( float x, float y ) {
 	owner = NULL;
 }
 
-void cSprite::Update( float px, float py ) {
-	cTimer *timer = cTimer::Instance();
-	cTrig *trig = cTrig::Instance();
-	cCamera *camera = cCamera::Instance();
+void Sprite::Update( float px, float py ) {
+	Timer *timer = Timer::Instance();
+	Trig *trig = Trig::Instance();
+	Camera *camera = Camera::Instance();
 	float a;
 	int sx, sy;
 	vector2D accel;
@@ -74,35 +74,35 @@ void cSprite::Update( float px, float py ) {
 	this->sy = sy;
 }
 
-void cSprite::Draw( void ) {
-	cVideo *video = cVideo::Instance();
-	cTrig *trig = cTrig::Instance();
-	cCamera *camera = cCamera::Instance();
+void Sprite::Draw( void ) {
+	Video *video = Video::Instance();
+	Trig *trig = Trig::Instance();
+	Camera *camera = Camera::Instance();
 	
 	if( !video->OutOfBounds( sx, sy ) )
 		image->DrawCentered( sx, sy, trig->RadToDeg( ang ) - trig->RadToDeg( (1.57 - camera->GetAngle() ) ) );
 }
 
-bool cSprite::SetImage( cImage *image ) {
+bool Sprite::SetImage( Image *image ) {
 	this->image = image;
 
 	return( true );
 }
 
-float cSprite::GetX( void ) {
+float Sprite::GetX( void ) {
 	return( x );
 }
 
-float cSprite::GetY( void ) {
+float Sprite::GetY( void ) {
 	return( y );
 }
 
-void cSprite::SetAngle( float ang ) {
+void Sprite::SetAngle( float ang ) {
 	this->ang = ang;
 }
 
 // check for collision between 'this' sprite and sprite
-void cSprite::CheckCollision( cSprite &sprite ) {
+void Sprite::CheckCollision( Sprite &sprite ) {
 	int c;
 	
 	c = CalculateCollision( GetBitmask(), sprite.GetBitmask(), (int)(sprite.GetX() - x), (int)(sprite.GetY() - y) );
@@ -144,62 +144,62 @@ void cSprite::CheckCollision( cSprite &sprite ) {
 	}
 }
 
-bitmask *cSprite::GetBitmask( float angOverride ) {
-	cTrig *trig = cTrig::Instance();
+bitmask *Sprite::GetBitmask( float angOverride ) {
+	Trig *trig = Trig::Instance();
 	
 	return( image->GetBitmask( trig->RadToDeg( angOverride ) ) );
 }
 
-void cSprite::SetMass( float mass ) {
+void Sprite::SetMass( float mass ) {
 	this->mass = mass;
 }
 
-void cSprite::SetThrust( float thrust ) {
+void Sprite::SetThrust( float thrust ) {
 	this->thrust = thrust;
 }
 
-SDL_Surface *cSprite::GetImage( float angOverride ) {
-	cTrig *trig = cTrig::Instance();
+SDL_Surface *Sprite::GetImage( float angOverride ) {
+	Trig *trig = Trig::Instance();
 
 	return( image->GetImage( trig->RadToDeg( angOverride ) ) );
 }
 
-SDL_Surface *cSprite::GetImage( void ) {
-	cCamera *camera = cCamera::Instance();
+SDL_Surface *Sprite::GetImage( void ) {
+	Camera *camera = Camera::Instance();
 	
 	return( GetImage( ang + (camera->GetAngle() - 1.57) ) );
 }
 
-bitmask *cSprite::GetBitmask( void ) {
-	cCamera *camera = cCamera::Instance();
+bitmask *Sprite::GetBitmask( void ) {
+	Camera *camera = Camera::Instance();
 
 	return( GetBitmask( ang + (camera->GetAngle() - 1.57) ) );
 }
 
-float cSprite::GetMass( void ) {
+float Sprite::GetMass( void ) {
 	return( mass );
 }
 
-vector2D cSprite::GetVelocity( void ) {
+vector2D Sprite::GetVelocity( void ) {
 	return( velocity );
 }
 
-float cSprite::GetAngle( void ) {
+float Sprite::GetAngle( void ) {
 	return( ang );
 }
 
-int cSprite::GetScreenX( void ) {
+int Sprite::GetScreenX( void ) {
 	return( sx );
 }
 
-int cSprite::GetScreenY( void ) {
+int Sprite::GetScreenY( void ) {
 	return( sy );
 }
 
-Uint32 cSprite::GetBlipClr( void ) {
+Uint32 Sprite::GetBlipClr( void ) {
 	return( radarBlip );
 }
 
-bool cSprite::NeedsDelete( void ) {
+bool Sprite::NeedsDelete( void ) {
 	return( deleteMe );
 }

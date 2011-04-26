@@ -6,13 +6,13 @@
 
 enum weaponType { WNONE, WLASER, WLASER2, WMISSILE, WBOMB, WRAY };
 
-class cWeapon {
+class Weapon {
 	public:
-		cWeapon();
-		cWeapon( weaponType type );
+		Weapon();
+		Weapon( weaponType type );
 	
 		void SetType( weaponType type );
-		void Fire( cSprite *owner );
+		void Fire( Sprite *owner );
 
 	private:
 		Uint32 rechargeDelay;

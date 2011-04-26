@@ -1,9 +1,9 @@
 #include "includes.h"
 #include "trig.h"
 
-cTrig *cTrig::pInstance = 0;
+Trig *Trig::pInstance = 0;
 
-cTrig::cTrig( void ) {
+Trig::Trig( void ) {
 	int i;
 
 	convdr = M_PI / 180.;
@@ -16,45 +16,45 @@ cTrig::cTrig( void ) {
 	}
 }
 
-cTrig *cTrig::Instance( void ) {
+Trig *Trig::Instance( void ) {
 
 	if( pInstance == 0 ) {
-		pInstance = new cTrig;
+		pInstance = new Trig;
 	}
 
 	return( pInstance );
 }
 
-double cTrig::DegToRad( int i ) {
+double Trig::DegToRad( int i ) {
 	return( i * convdr );
 }
 
-double cTrig::DegToRad( double i ) {
+double Trig::DegToRad( double i ) {
 	return( i * convdr );
 }
 
-int cTrig::RadToDeg( double i ) {
+int Trig::RadToDeg( double i ) {
 	return( (int)(i * convrd) );
 }
 
-double cTrig::GetCos( int ang ) {
+double Trig::GetCos( int ang ) {
 	return( cosTable[ang] );
 }
 
-double cTrig::GetCos( double ang ) {
+double Trig::GetCos( double ang ) {
 	return( cos( ang ) );
 }
 
-double cTrig::GetSin( int ang ) {
+double Trig::GetSin( int ang ) {
 	return( sinTable[ang] );
 }
 
-double cTrig::GetSin( double ang ) {
+double Trig::GetSin( double ang ) {
 	return( sin(ang) );
 }
 
 // rotates point (x, y) about point (ax, ay) and sets nx, ny to new point
-void cTrig::RotatePoint( float x, float y, float ax, float ay, float *nx, float *ny, float ang ) {
+void Trig::RotatePoint( float x, float y, float ax, float ay, float *nx, float *ny, float ang ) {
 	float theta = atan2( y - ay, x - ax );
 	float dist = sqrt( ((x - ax)*(x-ax)) + ((y - ay)*(y-ay)) );
 	float ntheta = theta + ang;

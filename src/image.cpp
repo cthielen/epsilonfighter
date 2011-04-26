@@ -6,14 +6,14 @@
 #include "timer.h"
 #include "video.h"
 
-cImage::cImage( ) {
+Image::Image( ) {
 	image = NULL;
 	memset( cache, 0, sizeof(SDL_Surface *) * NUM_ROTS );
 	memset( bcache, 0, sizeof(bitmask *) * NUM_ROTS );
 	memset( cache_access, 0, sizeof(Uint32) * NUM_ROTS );
 }
 
-cImage::cImage( char *filename ) {
+Image::Image( char *filename ) {
 	image = NULL;
 	memset( cache, 0, sizeof(SDL_Surface *) * NUM_ROTS );
 	memset( bcache, 0, sizeof(bitmask *) * NUM_ROTS );
@@ -22,7 +22,7 @@ cImage::cImage( char *filename ) {
 	Load( filename );
 }
 
-bool cImage::Load( char *filename ) {
+bool Image::Load( char *filename ) {
 	SDL_Surface *temp;
 
 	temp = IMG_Load( filename );
@@ -38,17 +38,17 @@ bool cImage::Load( char *filename ) {
 	return( true );
 }
 
-bool cImage::Draw( int x, int y ) {
+bool Image::Draw( int x, int y ) {
 	return( Draw( x, y, 0 ) );
 }
 
-bool cImage::DrawCentered( int x, int y ) {
+bool Image::DrawCentered( int x, int y ) {
 	return( DrawCentered( x, y, 0 ) );
 }
 
-bool cImage::Draw( int x, int y, int ang ) {
+bool Image::Draw( int x, int y, int ang ) {
 	int i; // cache index
-	cTimer *timer = cTimer::Instance();
+	Timer *timer = Timer::Instance();
 
 	while( ang < 0 )
 		ang += 360;
@@ -69,7 +69,7 @@ bool cImage::Draw( int x, int y, int ang ) {
 	return( true );
 }
 
-cImage::~cImage( ) {
+Image::~Image( ) {
 	int i;
 	
 	if( image )
@@ -81,27 +81,27 @@ cImage::~cImage( ) {
 	}
 }
 
-bool cImage::DrawCentered( int x, int y, int ang ) {
+bool Image::DrawCentered( int x, int y, int ang ) {
 	return( Draw( x - (image->w / 2), y - (image->h / 2), ang ) );
 }
 
-int cImage::GetWidth( void ) {
+int Image::GetWidth( void ) {
 	if( image )
 		return( image->w );
 	
 	return( 0 );
 }
 
-int cImage::GetHeight( void ) {
+int Image::GetHeight( void ) {
 	if( image )
 		return( image->h );
 	
 	return( 0 );
 }
 
-bitmask *cImage::GetBitmask( int ang ) {
+bitmask *Image::GetBitmask( int ang ) {
 	int i;
-	cTimer *timer = cTimer::Instance();
+	Timer *timer = Timer::Instance();
 	
 	while( ang < 0 )
 		ang += 360;
@@ -125,9 +125,9 @@ bitmask *cImage::GetBitmask( int ang ) {
 	return( bcache[i] );
 }
 
-SDL_Surface *cImage::GetImage( int ang ) {
+SDL_Surface *Image::GetImage( int ang ) {
 	int i;
-	cTimer *timer = cTimer::Instance();
+	Timer *timer = Timer::Instance();
 	
 	while( ang < 0 )
 		ang += 360;
@@ -146,13 +146,13 @@ SDL_Surface *cImage::GetImage( int ang ) {
 	return( cache[i] );
 }
 
-void cImage::DrawPartialCentered( int x, int y, int sx, int sy, int sw, int sh ) {
+void Image::DrawPartialCentered( int x, int y, int sx, int sy, int sw, int sh ) {
   DrawPartial( image, x - (image->w / 2), y - (image->h / 2), sx, sy, sw, sh );
 }
 
-void cImage::DrawPartial( SDL_Surface *s, int x, int y, int sx, int sy, int sw, int sh ) {
+void Image::DrawPartial( SDL_Surface *s, int x, int y, int sx, int sy, int sw, int sh ) {
   SDL_Rect src, dest;
-  cVideo *video = cVideo::Instance();
+  Video *video = Video::Instance();
 
   src.x = sx;
   src.y = sy;

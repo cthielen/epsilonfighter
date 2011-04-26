@@ -3,9 +3,9 @@
 
 #include "image.h"
 
-class cVideo {
+class Video {
 	public:
-		static cVideo *Instance();
+		static Video *Instance();
 
 		bool SetWindow( int w, int h, int bpp );
 
@@ -27,12 +27,12 @@ class cVideo {
 		Uint32 clrBlack;
 
 	protected:
-		cVideo();
-		cVideo( const cVideo & );
-  		cVideo& operator= (const cVideo&);
+		Video();
+		Video( const Video & );
+  		Video& operator= (const Video&);
 
   	private:
-		static cVideo *pInstance;
+		static Video *pInstance;
 
 		SDL_Surface *screen, *window; // screen we draw to, window is the actual window we flip
 		int pxMul; // pixel multipler for DrawPixel

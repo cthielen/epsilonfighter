@@ -1,22 +1,22 @@
 #include "audio.h"
 #include "log.h"
 
-cAudio *cAudio::pInstance = 0;
+Audio *Audio::pInstance = 0;
 
-cAudio::cAudio( void ) {
+Audio::Audio( void ) {
 
 }
 
-cAudio *cAudio::Instance( void ) {
+Audio *Audio::Instance( void ) {
 
 	if( pInstance == 0 ) {
-		pInstance = new cAudio;
+		pInstance = new Audio;
 	}
 
 	return( pInstance );
 }
 
-bool cAudio::Init( void ) {
+bool Audio::Init( void ) {
 	int audio_rate;
 	Uint16 audio_format;
 	int audio_channels;
@@ -51,12 +51,12 @@ bool cAudio::Init( void ) {
 	return( true );
 }
 
-void cAudio::Play( int which ) {
+void Audio::Play( int which ) {
 	if( which == 0 )
 		Mix_FadeInMusic( mars, 0, 2000);
 }
 
-bool cAudio::Close( void ) {
+bool Audio::Close( void ) {
 	Mix_FreeMusic( mars );
 	mars = NULL;
 

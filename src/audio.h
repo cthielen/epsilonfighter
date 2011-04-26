@@ -3,9 +3,9 @@
 
 #include "includes.h"
 
-class cAudio {
+class Audio {
 	public:
-		static cAudio *Instance();
+		static Audio *Instance();
 
 		bool Init( void );
 		bool Close( void );
@@ -13,12 +13,12 @@ class cAudio {
 		void Play( int which );
 
 	protected:
-		cAudio();
-		cAudio( const cAudio & );
-  		cAudio& operator= (const cAudio&);
+		Audio();
+		Audio( const Audio & );
+  		Audio& operator= (const Audio&);
 
   	private:
-		static cAudio *pInstance;
+		static Audio *pInstance;
 		Mix_Music *mars;
 };
 

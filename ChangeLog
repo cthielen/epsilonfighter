@@ -1,3 +1,9 @@
+Mon, Apr 25, 2011
+	Chris:
+		* Fixed memory corruption bug involving sprites created
+		without using 'new'
+		* Removed bits of silly Hungarian-notation
+
 Sun, Apr 24, 2011
 	Chris:
 		* Fixed compilation errors with GCC 4.6

@@ -7,7 +7,7 @@ fxShield::fxShield() {
 }
 
 void fxShield::Renew( Uint32 length ) {
-	cTimer *timer = cTimer::Instance();
+	Timer *timer = Timer::Instance();
 	
 	this->length = length;
 	start = timer->GetTicks();
@@ -19,7 +19,7 @@ bool fxShield::IsActive() {
 }
 
 void fxShield::Update() {
-	cTimer *timer = cTimer::Instance();
+	Timer *timer = Timer::Instance();
 	Uint32 current_time = timer->GetTicks();
 	Uint32 time_left = ( start + length ) - current_time;
 
@@ -49,7 +49,7 @@ void fxShield::Update() {
 void fxShield::Draw( int x, int y, SDL_Surface *s, bitmask *bm, SDL_Surface *to ) {
 	int a, b;
 	int pitch_adjust;
-	cVideo *video = cVideo::Instance();
+	Video *video = Video::Instance();
 
 	if( !active )
 		return;

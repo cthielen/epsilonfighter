@@ -6,11 +6,11 @@
 
 #define NUM_ROTS 36
 
-class cImage {
+class Image {
 	public:
-		cImage( );
-		cImage( char *filename );
-		~cImage( );
+		Image( );
+		Image( char *filename );
+		~Image( );
 
 		bool Load( char *filename );
 		bool Draw( int x, int y );

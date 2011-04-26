@@ -5,10 +5,10 @@
 #include "trig.h"
 #include "video.h"
 
-cAmmo::cAmmo( cSprite *owner, float x, float y, float ang ) {
-	cTimer *timer = cTimer::Instance();
+Ammo::Ammo( Sprite *owner, float x, float y, float ang ) {
+	Timer *timer = Timer::Instance();
 	
-	image = new cImage( "data/laser1.png" );
+	image = new Image( "data/laser1.png" );
 	
 	this->x = x + cos( ang ) * 15.;
 	this->y = y - sin( ang ) * 15.;
@@ -23,8 +23,8 @@ cAmmo::cAmmo( cSprite *owner, float x, float y, float ang ) {
 	creationStamp = timer->GetTicks();
 }
 
-void cAmmo::Collision( float severity ) {
-	cSpriteList *spriteList = cSpriteList::Instance();
+void Ammo::Collision( float severity ) {
+	SpriteList *spriteList = SpriteList::Instance();
 	
 	if( !deleteMe ) {
 		spriteList->Remove( this );
@@ -32,11 +32,11 @@ void cAmmo::Collision( float severity ) {
 	}
 }
 
-void cAmmo::Update( float px, float py ) {
-	cTimer *timer = cTimer::Instance();
-	cSpriteList *spriteList = cSpriteList::Instance();
+void Ammo::Update( float px, float py ) {
+	Timer *timer = Timer::Instance();
+	SpriteList *spriteList = SpriteList::Instance();
 	
-	cSprite::Update( px, py );
+	Sprite::Update( px, py );
 	
 	thrust = 0.;
 	
@@ -48,10 +48,10 @@ void cAmmo::Update( float px, float py ) {
 	}
 }
 
-void cAmmo::Draw( void ) {
-	cVideo *video = cVideo::Instance();
-	cTrig *trig = cTrig::Instance();
-	cCamera *camera = cCamera::Instance();
+void Ammo::Draw( void ) {
+	Video *video = Video::Instance();
+	Trig *trig = Trig::Instance();
+	Camera *camera = Camera::Instance();
 	
 	if( !video->OutOfBounds( sx, sy ) )
 		image->DrawCentered( sx, sy, trig->RadToDeg( camera->GetAngle() - 1.57 ) - trig->RadToDeg( ang ) );

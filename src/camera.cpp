@@ -2,18 +2,18 @@
 #include "includes.h"
 #include "video.h"
 
-cCamera *cCamera::pInstance = 0;
+Camera *Camera::pInstance = 0;
 
-cCamera *cCamera::Instance( void ) {
+Camera *Camera::Instance( void ) {
 
 	if( pInstance == 0 ) {
-		pInstance = new cCamera;
+		pInstance = new Camera;
 	}
 
 	return( pInstance );
 }
 
-cCamera::cCamera( void ) {
+Camera::Camera( void ) {
 	x = 0;
 	y = 0;
 	dx = 0;
@@ -23,18 +23,18 @@ cCamera::cCamera( void ) {
 	following = NULL;
 }
 
-void cCamera::Look( int x, int y ) {
+void Camera::Look( int x, int y ) {
 
 }
 
-bool cCamera::Follow( cSprite *sprite ) {
+bool Camera::Follow( Sprite *sprite ) {
 
 	following = sprite;
 
 	return( true );
 }
 
-void cCamera::Update( void ) {
+void Camera::Update( void ) {
 	if( following ) {
 		float spx, spy;
 
@@ -49,22 +49,22 @@ void cCamera::Update( void ) {
 	}
 }
 
-void cCamera::GetDelta( float *dx, float *dy ) {
+void Camera::GetDelta( float *dx, float *dy ) {
 	*dx = this->dx;
 	*dy = this->dy;
 }
 
-void cCamera::WorldtoScreen( float x, float y, int *sx, int *sy ) {
-	cVideo *video = cVideo::Instance();
+void Camera::WorldtoScreen( float x, float y, int *sx, int *sy ) {
+	Video *video = Video::Instance();
 	
 	*sx = (int)(x - this->x) + (video->GetWidth() / 2);
 	*sy = (int)(y - this->y) + (video->GetHeight() / 2);
 }
 
-void cCamera::SetAngle( float ang ) {
+void Camera::SetAngle( float ang ) {
 	this->ang = ang;
 }
 
-float cCamera::GetAngle( void ) {
+float Camera::GetAngle( void ) {
 	return( ang + 1.57 );
 }

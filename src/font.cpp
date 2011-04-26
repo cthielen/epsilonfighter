@@ -4,7 +4,7 @@
 #include "log.h"
 #include "video.h"
 
-cFont::cFont() {
+Font::Font() {
 	font = NULL;
 	filename = NULL;
 
@@ -13,7 +13,7 @@ cFont::cFont() {
 	b = 1.0f;
 }
 
-cFont::cFont( char *filename ) {
+Font::Font( char *filename ) {
 	font = NULL;
 	this->filename = NULL;
 
@@ -24,7 +24,7 @@ cFont::cFont( char *filename ) {
 	SetFont( filename );
 }
 
-cFont::~cFont() {
+Font::~Font() {
 	afont_free( font );
 
 	log( logMessage, "Font '%s' freed.", filename );
@@ -32,7 +32,7 @@ cFont::~cFont() {
 	free( filename );
 }
 
-bool cFont::SetFont( char *filename ) {
+bool Font::SetFont( char *filename ) {
 	font = afont_load( filename );
 
 	if( font == NULL ) {
@@ -47,8 +47,8 @@ bool cFont::SetFont( char *filename ) {
 	return( true );
 }
 
-void cFont::Render( int x, int y, char *text, ... ) {
-	cVideo *video = cVideo::Instance();
+void Font::Render( int x, int y, char *text, ... ) {
+	Video *video = Video::Instance();
 	char string[100] = {0};
 	va_list args;
 	int w, h, base;
@@ -64,7 +64,7 @@ void cFont::Render( int x, int y, char *text, ... ) {
 	                video->GetScreen(), x, y + base, string );
 }
 
-void cFont::SetColor( float r, float g, float b ) {
+void Font::SetColor( float r, float g, float b ) {
 	this->r = r;
 	this->g = g;
 	this->b = b;

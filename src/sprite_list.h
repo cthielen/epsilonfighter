@@ -4,31 +4,31 @@
 #include "image.h"
 #include "sprite.h"
 
-class cSpriteList {
+class SpriteList {
 	public:
-		static cSpriteList *Instance();
+		static SpriteList *Instance();
 
 		void Update( void );
 		void Draw( void );
 
-		bool Add( cSprite *sprite );
-		bool Remove( cSprite *sprite );
+		bool Add( Sprite *sprite );
+		bool Remove( Sprite *sprite );
 
-		// enumation - allows non-cSpriteList functions to parse the sprite list
-		list<cSprite *>::iterator Enumerate( void );
-		list<cSprite *>::iterator Enumerate( list<cSprite *>::iterator i );
-		cSprite *Retrieve( list<cSprite *>::iterator i );
+		// enumation - allows non-SpriteList functions to parse the sprite list
+		list<Sprite *>::iterator Enumerate( void );
+		list<Sprite *>::iterator Enumerate( list<Sprite *>::iterator i );
+		Sprite *Retrieve( list<Sprite *>::iterator i );
 	
 	protected:
-		cSpriteList( void );
-		cSpriteList( const cSpriteList & );
-  		cSpriteList& operator= (const cSpriteList&);
+		SpriteList( void );
+		SpriteList( const SpriteList & );
+  		SpriteList& operator= (const SpriteList&);
 	
 	private:
-		static cSpriteList *pInstance;
+		static SpriteList *pInstance;
 	
-		list<cSprite *> sprites;
-		list<cSprite *> removeList; // list of sprites to delete
+		list<Sprite *> sprites;
+		list<Sprite *> removeList; // list of sprites to delete
 };
 
 #endif // H_SPRITE_LIST

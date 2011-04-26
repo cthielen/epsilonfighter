@@ -5,12 +5,12 @@
 #include "trig.h"
 #include "video.h"
 
-cShip::cShip() {
+Ship::Ship() {
 	useAI = true;
 	isPlayer = false;
 	weapon.SetType( WLASER );
 	
-	image = new cImage( "data/player.png" );
+	image = new Image( "data/player.png" );
 	
 	mass = 100.;
 
@@ -18,7 +18,7 @@ cShip::cShip() {
 	hullStrength = 10.;
 }
 
-cShip::cShip( float x, float y ) {
+Ship::Ship( float x, float y ) {
 	useAI = true;
 	isPlayer = false;
 	
@@ -26,7 +26,7 @@ cShip::cShip( float x, float y ) {
 	this->y = y;
 	weapon.SetType( WLASER );
 	
-	image = new cImage( "data/player.png" );
+	image = new Image( "data/player.png" );
 	
 	mass = 100.;
 
@@ -34,12 +34,12 @@ cShip::cShip( float x, float y ) {
 	hullStrength = 10.;
 }
 
-void cShip::UseAI( bool useAI ) {
+void Ship::UseAI( bool useAI ) {
 	this->useAI = useAI;
 }
 
-void cShip::IsPlayer( bool isPlayer ) {
-	cVideo *video = cVideo::Instance();
+void Ship::IsPlayer( bool isPlayer ) {
+	Video *video = Video::Instance();
 	
 	this->isPlayer = isPlayer;
 	
@@ -47,60 +47,60 @@ void cShip::IsPlayer( bool isPlayer ) {
 	sy = (video->GetHeight() / 2);
 }
 
-bool cShip::GetIsPlayer( void ) {
+bool Ship::GetIsPlayer( void ) {
 	return( isPlayer );
 }
 
-void cShip::Turn( float ang ) {
-	cTrig *trig = cTrig::Instance();
+void Ship::Turn( float ang ) {
+	Trig *trig = Trig::Instance();
 
 	this->ang += trig->DegToRad( (double)ang );
 
 	if( isPlayer ) {
-		cCamera *camera = cCamera::Instance();
+		Camera *camera = Camera::Instance();
 
 		camera->SetAngle( this->ang );
 	}
 }
 
-void cShip::ThrottleUp( void ) {
+void Ship::ThrottleUp( void ) {
 	throttle += .1;
 	
 	if( throttle > 1. )
 		throttle = 1.;
 }
 
-void cShip::ThrottleDown( void ) {
+void Ship::ThrottleDown( void ) {
 	throttle -= .1;
 	
 	if( throttle < 0. )
 		throttle = 0.;
 }
 
-void cShip::Fire( void ) {
+void Ship::Fire( void ) {
 	weapon.Fire( this );
 }
 
-void cShip::Update( float px, float py ) {
-	cSprite::Update( px, py );
+void Ship::Update( float px, float py ) {
+	Sprite::Update( px, py );
 	
 	flare.Update();
 }
 
-void cShip::Draw( void ) {
-	cVideo *video = cVideo::Instance();
+void Ship::Draw( void ) {
+	Video *video = Video::Instance();
 
 	if( isPlayer)
 		image->DrawCentered( video->GetWidth() / 2, video->GetHeight() / 2 );
 	else
-		cSprite::Draw();
+		Sprite::Draw();
 	if( isPlayer )
 		flare.Draw( sx - (image->GetWidth() / 2), sy - (image->GetHeight() / 2), GetImage( 0 ), GetBitmask( 0 ), video->GetScreen() );
 	else
 		flare.Draw( sx - (image->GetWidth() / 2), sy - (image->GetHeight() / 2), GetImage(), GetBitmask(), video->GetScreen() );
 }
 
-void cShip::Collision( float severity ) {
+void Ship::Collision( float severity ) {
 	flare.Renew( 750 );
 	
 	if( shieldStrength > 0. ) {
@@ -112,7 +112,7 @@ void cShip::Collision( float severity ) {
 	
 	// we're dead
 	if( hullStrength < 0. ) {
-		cSpriteList *spriteList = cSpriteList::Instance();
+		SpriteList *spriteList = SpriteList::Instance();
 		
 		if( !deleteMe ) {
 			spriteList->Remove( this );

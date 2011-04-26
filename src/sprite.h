@@ -4,17 +4,17 @@
 #include "image.h"
 #include "vector.h"
 
-class cSprite {
+class Sprite {
 	public:
-		cSprite( void );
-		cSprite( float x, float y );
+		Sprite( void );
+		Sprite( float x, float y );
 
 		// pass the player's x,y to update in order to calculate rotated coords
 		virtual void Update( float px, float py );
 		virtual void Draw( void );
 	
 		// check to see if a colision has occured
-		virtual void CheckCollision( cSprite &sprite );
+		virtual void CheckCollision( Sprite &sprite );
 		// this sprite has been involved in a collision
 		virtual void Collision( float severity ) = 0;
 	
@@ -22,7 +22,7 @@ class cSprite {
 		float GetMass( void );
 		void SetThrust( float thrust );
 
-		bool SetImage( cImage *image );
+		bool SetImage( Image *image );
 		SDL_Surface *GetImage( float angOverride );
 		SDL_Surface *GetImage( void );
 		bitmask *GetBitmask( float angOverride );
@@ -52,7 +52,7 @@ class cSprite {
 		float rx, ry; // rotated world coord (x,y)
 		int sx, sy;
 	
-		cImage *image;
+		Image *image;
 	
 		// physics data
 		vector2D velocity;
@@ -61,7 +61,7 @@ class cSprite {
 		float mass;
 		float thrust; // engine thrust (the f in f=ma)
 	
-		cSprite *owner; // sprite that created this sprite (most sprites
+		Sprite *owner; // sprite that created this sprite (most sprites
 						// done have this, but ammo, i.e., does
 };
 

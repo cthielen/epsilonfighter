@@ -2,7 +2,7 @@
 #include "timer.h"
 
 cAnimation::cAnimation() {
-  cTimer *timer = cTimer::Instance();
+  Timer *timer = Timer::Instance();
 
   strip = NULL;
   length = 0;
@@ -12,7 +12,7 @@ cAnimation::cAnimation() {
 }
 
 cAnimation::cAnimation( char *filename ) {
-  cTimer *timer = cTimer::Instance();
+  Timer *timer = Timer::Instance();
 
   strip = NULL;
   length = 0;
@@ -24,7 +24,7 @@ cAnimation::cAnimation( char *filename ) {
 }
 
 bool cAnimation::Load( char *filename ) {
-  strip = new cImage();
+  strip = new Image();
 
   return( strip->Load( filename ) );
 }
@@ -39,7 +39,7 @@ void cAnimation::SetFrames( int num ) {
 }
 
 void cAnimation::Reset( void ) {
-  cTimer *timer = cTimer::Instance();
+  Timer *timer = Timer::Instance();
 
   start = timer->GetTicks();
 }
@@ -51,7 +51,7 @@ void cAnimation::Draw( int cx, int cy ) {
 
 // calculates next frame. returns false if animation is over
 bool cAnimation::Update( void ) {
-  cTimer *timer = cTimer::Instance();
+  Timer *timer = Timer::Instance();
 
   
 }

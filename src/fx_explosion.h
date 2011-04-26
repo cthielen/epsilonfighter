@@ -4,7 +4,7 @@
 #include "animation.h"
 #include "sprite.h"
 
-class fxExplosion : public cSprite {
+class fxExplosion : public Sprite {
 	public:
 		fxExplosion( void );
 	

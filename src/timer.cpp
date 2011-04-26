@@ -1,30 +1,30 @@
 #include "timer.h"
 
-cTimer *cTimer::pInstance = 0;
+Timer *Timer::pInstance = 0;
 
-cTimer::cTimer( void ) {
+Timer::Timer( void ) {
 	dfps = 30;
 	multiplier = 1.;
 	loopLen = 1000 / dfps;
 	pauseDelay = 0;
 }
 
-cTimer *cTimer::Instance( void ) {
+Timer *Timer::Instance( void ) {
 
 	if( pInstance == 0 ) {
-		pInstance = new cTimer;
+		pInstance = new Timer;
 	}
 
 	return( pInstance );
 }
 
-void cTimer::SetDesiredFPS( int fps ) {
+void Timer::SetDesiredFPS( int fps ) {
 	dfps = fps;
 	loopLen = 1000 / dfps;
 }
 
 // returns the number of logic loops to run
-int cTimer::GetLoops( void ) {
+int Timer::GetLoops( void ) {
 	Uint32 currentTick = SDL_GetTicks();
 	Uint32 dt;
 	int loops;
@@ -42,11 +42,11 @@ int cTimer::GetLoops( void ) {
 	return( loops );
 }
 
-void cTimer::Reset( void ) {
+void Timer::Reset( void ) {
 	lastTick = SDL_GetTicks();
 }
 
-void cTimer::Delay( void ) {
+void Timer::Delay( void ) {
 	Uint32 delay;
 	
 	delay = loopLen - (SDL_GetTicks() - lastTick);
@@ -56,10 +56,10 @@ void cTimer::Delay( void ) {
 	SDL_Delay( 15 );
 }
 
-float cTimer::GetMultiplier( void ) {
+float Timer::GetMultiplier( void ) {
 	return( multiplier );
 }
 
-Uint32 cTimer::GetTicks( void ) {
+Uint32 Timer::GetTicks( void ) {
 	return( SDL_GetTicks() - pauseDelay );
 }

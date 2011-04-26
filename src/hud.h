@@ -8,9 +8,9 @@
 
 enum msgType {HUD_MSG_NORMAL, HUD_MSG_COMMAND};
 
-class cHud {
+class Hud {
 	public:
-		cHud( void );
+		Hud( void );
 	
 		void Update( void );
 		void Draw( void );
@@ -23,8 +23,8 @@ class cHud {
 		vector<enum msgType> messageType;
 		vector<Uint32> messageTime; // the delay length of every message
 
-		cFont font;
-		cImage pilot1;
+		Font font;
+		Image pilot1;
 	
 		float radarRange; // in game world units
 	

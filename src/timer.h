@@ -3,9 +3,9 @@
 
 #include "includes.h"
 
-class cTimer {
+class Timer {
 	public:
-		static cTimer *Instance();
+		static Timer *Instance();
 	
 		void SetDesiredFPS( int fps );
 		int GetLoops( void ); // returns the number of logic loops to run
@@ -15,12 +15,12 @@ class cTimer {
 		Uint32 GetTicks( void );
 
 	protected:
-		cTimer();
-		cTimer( const cTimer & );
-  		cTimer& operator= (const cTimer&);
+		Timer();
+		Timer( const Timer & );
+  		Timer& operator= (const Timer&);
 
   	private:
-		static cTimer *pInstance;
+		static Timer *pInstance;
 		
 		int dfps; // desired fps
 		Uint32 lastTick;

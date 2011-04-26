@@ -4,17 +4,17 @@
 #include "vector.h"
 #include "weapon.h"
 
-cWeapon::cWeapon() {
+Weapon::Weapon() {
 	SetType( WNONE );
 	lastFire = 0;
 }
 
-cWeapon::cWeapon( weaponType type ) {
+Weapon::Weapon( weaponType type ) {
 	SetType( type );
 	lastFire = 0;
 }
 
-void cWeapon::SetType( weaponType type ) {
+void Weapon::SetType( weaponType type ) {
 	this->type = type;
 	
 	switch( type ) {
@@ -30,18 +30,18 @@ void cWeapon::SetType( weaponType type ) {
 	}
 }
 
-void cWeapon::Fire( cSprite *owner ) {
-	cTimer *timer = cTimer::Instance();
+void Weapon::Fire( Sprite *owner ) {
+	Timer *timer = Timer::Instance();
 	
 	if(( lastFire + rechargeDelay ) < timer->GetTicks() ) {
-		cSpriteList *spriteList = cSpriteList::Instance();
+		SpriteList *spriteList = SpriteList::Instance();
 		lastFire = timer->GetTicks();
 		
 		// fire the weapon
 		switch( type ) {
 			case WLASER:
 			{
-				cAmmo *laser = new cAmmo( owner, owner->GetX(), owner->GetY(), owner->GetAngle() );
+				Ammo *laser = new Ammo( owner, owner->GetX(), owner->GetY(), owner->GetAngle() );
 			
 				spriteList->Add( laser );
 			}

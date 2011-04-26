@@ -3,9 +3,9 @@
 
 #include "sprite.h"
 
-class cCamera {
+class Camera {
 	public:
-		static cCamera *Instance();
+		static Camera *Instance();
 
 		void Update( void );
 
@@ -14,23 +14,23 @@ class cCamera {
 		void WorldtoScreen( float x, float y, int *sx, int *sy );
 
 		void Look( int x, int y );
-		bool Follow( cSprite *sprite );
+		bool Follow( Sprite *sprite );
 
 		void SetAngle( float ang );
 		float GetAngle( void );
 
 	protected:
-		cCamera();
-		cCamera( const cCamera & );
-  		cCamera& operator= (const cCamera&);
+		Camera();
+		Camera( const Camera & );
+  		Camera& operator= (const Camera&);
 
 	private:
-		static cCamera *pInstance;
+		static Camera *pInstance;
 
 		float x, y; // camera position
 		float dx, dy; // the change in camera position from the last update
 		float ang;
-		cSprite *following; // the sprite we're following (NULL if not following)
+		Sprite *following; // the sprite we're following (NULL if not following)
 
 };
 

@@ -13,13 +13,13 @@ void fxExplosion::Collision( void ) {
 }
 
 void fxExplosion::Update( float px, float py ) {
-	cSprite::Update( px, py );
+	Sprite::Update( px, py );
 }
 
 void fxExplosion::Draw( void ) {
-	cVideo *video = cVideo::Instance();
-	cTrig *trig = cTrig::Instance();
-	cCamera *camera = cCamera::Instance();
+	Video *video = Video::Instance();
+	Trig *trig = Trig::Instance();
+	Camera *camera = Camera::Instance();
 	
 	//if( !video->OutOfBounds( sx, sy ) )
 	//explosion.Draw( sx, sy );

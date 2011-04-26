@@ -3,12 +3,12 @@
 
 #include "font.h"
 
-class cBriefing {
+class Briefing {
 	public:
-		cBriefing( int which );
+		Briefing( int which );
 
 	private:
-		cFont font;
+		Font font;
 };
 
 #endif // H_BRIEFING

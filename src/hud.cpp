@@ -5,7 +5,7 @@
 #include "sprite_list.h"
 #include "video.h"
 
-cHud::cHud( void ) {
+Hud::Hud( void ) {
 	font.SetFont( "data/font1.af" );
 	pilot1.Load( "data/pilot1.png" );
 	
@@ -13,13 +13,13 @@ cHud::cHud( void ) {
 	radarRange = 50. / MAX_RADAR_RANGE;
 }
 
-void cHud::Update( void ) {
+void Hud::Update( void ) {
 
 }
 
-void cHud::Draw( void ) {
-	cVideo *video = cVideo::Instance();
-	cSpriteList *spriteList = cSpriteList::Instance();
+void Hud::Draw( void ) {
+	Video *video = Video::Instance();
+	SpriteList *spriteList = SpriteList::Instance();
 	int tx, ty;
 	
 	// draw hud messages
@@ -38,11 +38,11 @@ void cHud::Draw( void ) {
 	// draw radar
 	video->DrawRect( (video->GetWidth() / 2) - 25, video->GetHeight() - 55, 50, 50, video->RGBtoClr( 0, 0, 100 ) );
 	// draw the radar blips
-	list<cSprite *>::iterator i = spriteList->Enumerate();
+	list<Sprite *>::iterator i = spriteList->Enumerate();
         
-	while( i != (list<cSprite *>::iterator)NULL ) {
+	while( i != (list<Sprite *>::iterator)NULL ) {
 		float x, y;
-		cSprite *sprite;
+		Sprite *sprite;
 		
 		sprite = spriteList->Retrieve( i );
 		
@@ -63,19 +63,19 @@ void cHud::Draw( void ) {
 	}
 }
 
-void cHud::Message( char *msg ) {
+void Hud::Message( char *msg ) {
 	Message( HUD_MSG_NORMAL, msg );
 }
 
-void cHud::Message( msgType type, char *msg ) {
+void Hud::Message( msgType type, char *msg ) {
 	messages.push_back( msg );
 	messageType.push_back( type );
 	messageTime.push_back( 3000 );
 }
 
 // ensures (x,y) is on graphical radar
-bool cHud::OutOfRadarBounds( float x, float y ) {
-	cVideo *video = cVideo::Instance();
+bool Hud::OutOfRadarBounds( float x, float y ) {
+	Video *video = Video::Instance();
 	
 	if( x < ((video->GetWidth() / 2) - 25) )
 		return( true );

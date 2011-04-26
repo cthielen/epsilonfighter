@@ -3,11 +3,11 @@
 
 #include "afont/afont_sdl.h"
 
-class cFont {
+class Font {
  public:
-	cFont();
-	cFont( char *filename );
-	~cFont();
+	Font();
+	Font( char *filename );
+	~Font();
 
 	bool SetFont( char *filename );
 	void Render( int x, int y, char *text, ... );
