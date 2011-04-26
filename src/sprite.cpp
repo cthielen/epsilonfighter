@@ -200,6 +200,6 @@ Uint32 cSprite::GetBlipClr( void ) {
 	return( radarBlip );
 }
 
-bool cSprite::Delete( void ) {
+bool cSprite::NeedsDelete( void ) {
 	return( deleteMe );
 }

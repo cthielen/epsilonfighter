@@ -39,7 +39,7 @@ class cSprite {
 		
 		Uint32 GetBlipClr( void );
 		
-		bool Delete( void );
+		bool NeedsDelete( void );
 
 	protected:
 		// radar blip color

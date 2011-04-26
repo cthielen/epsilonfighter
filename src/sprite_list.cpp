@@ -44,8 +44,8 @@ void cSpriteList::Update( void ) {
 		// look for the sprite to be removed (*i) in the sprite list (*j)
 		for( j = sprites.begin(); j != sprites.end(); ++j ) {
 			if( (*i) == (*j) ) {
-				if( (*j)->Delete() )
-					free( *j );
+				//if( (*j)->NeedsDelete() )
+					//delete *j;
 				sprites.erase( j );
 				break;
 			}
@@ -81,7 +81,7 @@ bool cSpriteList::Remove( cSprite *sprite ) {
 		}
 	}
 
-	return( false );	
+	return( false );
 }
 
 // NEVER keep this iterator after your function ends. the moment the list

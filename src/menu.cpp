@@ -47,7 +47,7 @@ void menu( void ) {
 		stars[i].clr = video->RGBtoClr( 0, 0, rand() % 256 );
 	}
 
-	end_time = SDL_GetTicks() + 6000;
+	end_time = SDL_GetTicks() + 3300; // 3.3s
 
 	// do the "Little Rage Presents" text with the flying stars
 	while( SDL_GetTicks() < end_time ) {
@@ -76,7 +76,7 @@ void menu( void ) {
 		SDL_Delay( 15 );
 	}
 
-	end_time = SDL_GetTicks() + 6000;
+	end_time = SDL_GetTicks() + 3300; // 3.3s
 
 	// do the "A Rageful 2005 Experiment ..." text with the flying stars
 	while( SDL_GetTicks() < end_time ) {
@@ -105,7 +105,7 @@ void menu( void ) {
 		SDL_Delay( 15 );
 	}
 
-	end_time = SDL_GetTicks() + 6000;
+	end_time = SDL_GetTicks() + 3300; // 3.3s
 
 	// do the title screen image with the flying stars
 	while( SDL_GetTicks() < end_time ) {
@@ -134,7 +134,7 @@ void menu( void ) {
 		SDL_Delay( 15 );
 	}
 
-	end_time = SDL_GetTicks() + 6000;
+	end_time = SDL_GetTicks() + 3300; // 3.3s
 
 	// do the title screen image with the flying stars
 	while( SDL_GetTicks() < end_time ) {

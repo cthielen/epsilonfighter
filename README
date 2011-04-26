@@ -19,7 +19,7 @@
  pixelated and the music is meant to sound like an old primitive MIDI
  sound card. The focus of the game is gameplay: story, action, and all the
  other subtle game aspects that don't get much attention in the world of
- flashy 3D graphics and sound.
+ flashy 3D graphics and sound. </rant>
  
  II. License
  -----------
@@ -56,8 +56,8 @@
  ----------------
     Installation of Epsilon Fighter varies depending on the package
  downloaded. If you downloaded the source package, you will need
- a C++ compiler such as GNU GCC 3.1. The game may or may not compile
- under GNU GCC 2.x. Compiling also requires the Simple DirectMedia
+ a C++ compiler such as GNU GCC 4. The game may or may not compile
+ under GNU GCC 2.x/3.x. Compiling also requires the Simple DirectMedia
  Library (SDL, www.libsdl.org) and SDL_image (www.libsdl.org). SDL
  is needed for the graphics and input and SDL_image is used to load
  PNG files. If you are compiling SDL_image yourself, ensure PNG
@@ -70,3 +70,20 @@
  
  V. How to Play
  -------------- 
+    Epsilon Fighter has a unique style of play in which the player's
+ ship always faces the top of the screen. Instead of the sprite rotating,
+ the entire view rotates, simulating the dizzying effects of space
+ dogfighting. Move the mouse left and right to rotate. Press the mouse
+ button (primary button, usually the left button) to fire. Use mouse-
+ wheel up and down to throttle, or use the 'w' and 's' keys (hold them
+ down for a few seconds).
+    Epsilon Fighter also uses somewhat realistic physics: your momentum
+ matters. Don't accelerate quickly in one direction else you'll end up
+ sliding off in that direction of space and take an equal amount of time
+ to boost back. But, these physics can be used to your advantage too:
+ use your booster (tab) and aim ahead in turns.
+    The particulars of your mission will be given to you onscreen. The
+ blue square at the bottom of your screen is your rectangle, and will
+ highlight hostile enemies in red, with friendlies in white. Planets
+ and other objects appear as bigger dots.
+
