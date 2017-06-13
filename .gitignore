@@ -3,4 +3,5 @@ config.guess
 .deps
 Makefile
 autom4te.cache
+*.o
 
