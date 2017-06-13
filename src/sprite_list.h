@@ -17,6 +17,7 @@ class SpriteList {
 		// enumation - allows non-SpriteList functions to parse the sprite list
 		list<Sprite *>::iterator Enumerate( void );
 		list<Sprite *>::iterator Enumerate( list<Sprite *>::iterator i );
+		list<Sprite *>::iterator EnumerationEnd( void );
 		Sprite *Retrieve( list<Sprite *>::iterator i );
 	
 	protected:

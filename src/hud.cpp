@@ -40,7 +40,7 @@ void Hud::Draw( void ) {
 	// draw the radar blips
 	list<Sprite *>::iterator i = spriteList->Enumerate();
         
-	while( i != (list<Sprite *>::iterator)NULL ) {
+	while( i != spriteList->EnumerationEnd() ) {
 		float x, y;
 		Sprite *sprite;
 		

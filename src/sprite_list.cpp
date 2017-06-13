@@ -93,11 +93,12 @@ list<Sprite *>::iterator SpriteList::Enumerate( void ) {
 	return( i );
 }
 
+list<Sprite *>::iterator SpriteList::EnumerationEnd( void ) {
+	return sprites.end();
+}
+
 list<Sprite *>::iterator SpriteList::Enumerate( list<Sprite *>::iterator i ) {
 	i++;
-	
-	if( i == sprites.end() )
-		return( (list<Sprite *>::iterator)NULL );
 	
 	return( i );
 }
