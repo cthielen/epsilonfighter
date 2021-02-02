@@ -16,6 +16,7 @@ int main( int argc, char **argv ) {
 	audio->Init();
 
 	SDL_ShowCursor( 0 );
+	SDL_WM_GrabInput( SDL_GRAB_ON );
 
 	if( argc > 1) {
 		if( !strcmp( argv[1], "--debug" ) ) {
